@@ -63,7 +63,7 @@ public class Tuple {
 
 	public void put(String column, Object value) {
 		if ( currentState == null ) {
-			currentState = new HashMap<String, TupleOperation>();
+			currentState = new HashMap<>();
 		}
 		if ( value == null ) {
 			currentState.put( column, new TupleOperation( column, null, PUT_NULL ) );
@@ -75,7 +75,7 @@ public class Tuple {
 
 	public void remove(String column) {
 		if ( currentState == null ) {
-			currentState = new HashMap<String, TupleOperation>();
+			currentState = new HashMap<>();
 		}
 		currentState.put( column, new TupleOperation( column, null, REMOVE ) );
 	}
@@ -91,7 +91,7 @@ public class Tuple {
 			return Collections.emptySet();
 		}
 		else {
-			return new SetFromCollection<TupleOperation>( currentState.values() );
+			return new SetFromCollection<>( currentState.values() );
 		}
 	}
 
@@ -103,7 +103,7 @@ public class Tuple {
 		if ( currentState == null ) {
 			return snapshot.getColumnNames();
 		}
-		Set<String> columnNames = new HashSet<String>( snapshot.getColumnNames() );
+		Set<String> columnNames = new HashSet<>( snapshot.getColumnNames() );
 		for ( TupleOperation op : currentState.values() ) {
 			switch ( op.getType() ) {
 				case PUT :

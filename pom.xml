@@ -34,6 +34,7 @@
         <module>jipijapa</module>
         <!-- <module>modules</module> The modules require all of the above modules to be enabled -->
         <module>performance</module>
+	<module>rethinkdb</module>
     </modules>
 
     <properties>
